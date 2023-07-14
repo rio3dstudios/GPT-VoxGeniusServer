@@ -38,7 +38,7 @@
 </p>
 
 
-# webglserver
+# GPT-VoxGenius Server
 Basic NodeJS Server in Java Script for Unity GPT-VoxGenius asset
 
 GPT-VoxGenius: Conversations & Script 
@@ -78,7 +78,7 @@ http://localhost:3000/api/npc
 
 ## Usage
 
-req and res from openai API.
+Using the openai API.
 
 ```javascript
 
