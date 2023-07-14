@@ -75,6 +75,20 @@ http://localhost:3000/api/copilot
 http://localhost:3000/api/npc
 
 ```
+## API KEYS
+
+The Chat GPT API access requires a valid API key from OpenAI and the the Elevenlabs API requires a valid API key from the  the Elevenlabs.
+you need to configure your api keys in the api.json file in the config folder
+```json
+
+{
+    "API_URL": "https://api.openai.com/v1/engines/gpt-3.5-turbo/completions",
+    "OPENAI_API_KEY":"",
+    "IIELEVENLABS_API_KEY":"",
+    "VOICE_ID":"EXAVITQu4vr4xnSDxMaL"
+}
+```
+
 
 ## Usage
 
