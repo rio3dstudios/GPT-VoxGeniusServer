@@ -79,8 +79,8 @@ http://localhost:3000/api/npc
 
 The Chat GPT API access requires a valid API key from OpenAI(https://platform.openai.com/account/api-keys) 
 and the the Elevenlabs API requires a valid API key from the Elevenlabs.
-You can view your Elevenlabs API using the 'Profile' tab on https://beta.elevenlabs.io
-you need to configure your api keys in the api.json file in the config folder
+You can view your Elevenlabs API using the 'Profile' tab on https://beta.elevenlabs.io .
+You need to configure your api keys in the api.json file in the config folder
 ```json
 
 {
