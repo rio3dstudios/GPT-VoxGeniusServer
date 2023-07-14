@@ -122,7 +122,9 @@ res.send(completion_text);
 ```
 
 Generating an audio file from openai API completion_text
+
 NOTICE: to do the audio conversion you need to have FFmpeg installed on your machine (https://github.com/BtbN/FFmpeg-Builds/releases)
+
 tutorial how to install FFmpeg in windows 10: https://www.youtube.com/watch?v=qjtmgCb8NcE
 ```javascript
 const fs = require('fs');
