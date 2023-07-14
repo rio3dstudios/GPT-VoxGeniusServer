@@ -49,33 +49,42 @@ exports.processMessage = async (req, res) => {
       console.log(completion_text);
 
       voice.textToSpeechStream(apiConfig.IIELEVENLABS_API_KEY, apiConfig.VOICE_ID, completion_text)
-      .then(responseStream => {
-        const tempFilePath = path.join(tempDir, 'temp.mp3');
-        const convertedAudioPath = path.join(tempDir, 'converted_response.wav');
-    
-        const writeStream = fs.createWriteStream(tempFilePath);
-        responseStream.pipe(writeStream);
-    
-        writeStream.on('finish', () => {
-          convertToWav(tempFilePath, convertedAudioPath, () => {
-            const wavData = fs.readFileSync(convertedAudioPath);
-            const audioDataString = Buffer.from(wavData).toString('base64');
-    
-            const response = {
-              channelCount: getChannelCount(wavData),
-              sampleRate: getSampleRate(wavData),
-              audioData: audioDataString,
-              completionText: completion_text
-            };
-    
-    
-            fs.unlinkSync(tempFilePath);
-            fs.unlinkSync(convertedAudioPath);
-    
-            res.send(JSON.stringify(response).toString());
-          });
-        });
-      })//END_THEN
+  .then(responseStream => {
+    // Define the temporary file paths for the audio files
+    const tempFilePath = path.join(tempDir, 'temp.mp3');
+    const convertedAudioPath = path.join(tempDir, 'converted_response.wav');
+
+    // Create a write stream to save the response audio to a temporary file
+    const writeStream = fs.createWriteStream(tempFilePath);
+    responseStream.pipe(writeStream); // Pipe the response stream to the write stream
+
+    // When the writing is finished
+    writeStream.on('finish', () => {
+      // Convert the temporary audio file to WAV format
+      convertToWav(tempFilePath, convertedAudioPath, () => {
+        // Read the converted WAV audio data
+        const wavData = fs.readFileSync(convertedAudioPath);
+
+        // Convert the audio data to a base64-encoded string
+        const audioDataString = Buffer.from(wavData).toString('base64');
+
+        // Construct the response object
+        const response = {
+          channelCount: getChannelCount(wavData),
+          sampleRate: getSampleRate(wavData),
+          audioData: audioDataString,
+          completionText: completion_text
+        };
+
+        // Remove the temporary files
+        fs.unlinkSync(tempFilePath);
+        fs.unlinkSync(convertedAudioPath);
+
+        // Send the response as a JSON string
+        res.send(JSON.stringify(response).toString());
+      });
+    });
+  })//END_THEN
       .catch(error => {
         console.error(error);
      
