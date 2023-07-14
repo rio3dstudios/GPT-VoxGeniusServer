@@ -16,15 +16,20 @@ exports.processMessage = async(req, res)=>{
    
     messages.push({ role: "user", content: req.body.message});
     
+    // Create a chat completion using the OpenAI API
     const completion = await openai.createChatCompletion({
-      model: "gpt-3.5-turbo",
-      messages:  messages,
+     model: "gpt-3.5-turbo",
+     messages: messages,
     });
 
+    // Extract the completion text from the API response
     const completion_text = completion.data.choices[0].message.content;
+
+    // Log the completion text to the console
     console.log(completion_text);
-    //res.send({ reply: completion_text });
-	res.send( completion_text );
+
+    // Send the completion text as the response
+    res.send(completion_text);
 
   }
    catch (error) {
