@@ -1,7 +1,7 @@
 <p align="center">
  <img width="100px" src="https://i.imgur.com/N9vZIB1.png" align="center" alt="GPT-VoxGenius" />
  <h2 align="center">GPT-VoxGenius Server</h2>
- <p align="center">GPT-VoxGenius Server is an NodeJS server to get openai API completion text and convert to audio vocie with elevenlabs API!</p>
+ <p align="center">GPT-VoxGenius Server is an NodeJS server to get openai API completion text and convert to audio voice with elevenlabs API!</p>
 </p>
   <p align="center">
     <a href="https://github.com/rio3dstudios/GPT-VoxGeniusServer/graphs/contributors">
